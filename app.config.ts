@@ -32,7 +32,7 @@ const env = {
   appSlug: "caderno",
   // S3 URL of the app logo - set this to the URL returned by generate_image when creating custom logo
   // Leave empty to use the default icon from assets/images/icon.png
-  logoUrl: "",
+  logoUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310519664023206919/CAwpRHWYqdKODOaq.png",
   scheme: schemeFromBundleId,
   iosBundleId: bundleId,
   androidPackage: bundleId,
@@ -56,6 +56,8 @@ const publicRuntime = {
     process.env.VITE_APP_ID ??
     process.env.EXPO_PUBLIC_APP_ID ??
     "",
+  googleAndroidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? "",
+  googleWebClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? "",
   apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? "",
 };
 
@@ -77,7 +79,7 @@ const config: ExpoConfig = {
   },
   android: {
     adaptiveIcon: {
-      backgroundColor: "#E6F4FE",
+      backgroundColor: "#FFF7F9",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
@@ -107,6 +109,10 @@ const config: ExpoConfig = {
   plugins: [
     "expo-asset",
     "expo-router",
+    "expo-sqlite",
+    "expo-sharing",
+    "expo-web-browser",
+    "expo-localization",
     [
       "expo-audio",
       {
